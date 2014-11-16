@@ -1,5 +1,13 @@
 Actor CombatShotgun : Weapon Replaces Shotgun
 {
+	Weapon.Ammotype1 "LoadedShell"	
+	Weapon.Ammogive1 4
+	Weapon.Ammouse1 1
+	Weapon.Ammotype2 "Shell"
+	Inventory.PickupMessage "You got the combat shotgun!"
+	
+	+WEAPON.AMMO_OPTIONAL
+	
 	States
 	{
 		Ready:
@@ -11,27 +19,68 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 		Select:
 			SHTG A 1 A_Raise
 			Loop
-		Fire:
-			SHTG A 3
-			SHTG A 7 A_FireShotgun
-			SHTG BC 5
-			SHTG D 4
-			SHTG CB 5
-			SHTG A 3
+		Fire: 
+			TNT1 A 0 A_JumpIfNoAmmo("ReloadStart")
+			SHTG A 5 A_PlaySound("weapons/shotgf", CHAN_WEAPON)
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-4, 4)), 1, 0, 0, 0, (random(-3, 3)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-4, 4)), 0, 0, 0, 0, (random(-3, 3)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-3, 3)), 0, 0, 0, 0, (random(-2, 2)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-3, 3)), 0, 0, 0, 0, (random(-2, 2)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-2, 2)), 0, 0, 0, 0, (random(-1, 1)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-2, 2)), 0, 0, 0, 0, (random(-1, 1)))
+			SHTG A 0 A_FireCustomMissile(ShotgunPellet, (random(-1, 1)), 0, 0, 0, 0, 0)
+			SHTG B 2
+			SHTG C 10
+			SHTG DC 3
+			SHTG B 2
 			SHTG A 7 A_ReFire
 			Goto Ready
 		AltFire:
-			RPUN B 1
-			RPUN C 2 A_CustomPunch(25, 1, 4, "MeleePuff")
+			SHTG A 1 Offset(-16, 54)
+			SHTG A 1 Offset(-32, 68)
+			RPUN B 1 Offset(0, 32)
+			RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
 			RPUN D 8
 			RPUN C 7
 			Goto Ready
 		Flash:
-			SHTF A 4 Bright A_Light1
-			SHTF B 3 Bright A_Light2
+			SHTF A 3 Bright A_Light1
+			SHTF B 2 Bright A_Light2
 			Goto LightDone
 		Spawn:
 			SHOT A -1
 			Stop
+		ReloadStart:
+			TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadStart2")
+			Goto ReloadFail
+		ReloadStart2:
+			SHTG ABC 4
+			Goto ReloadLoop
+		ReloadLoop:
+			TNT1 A 0 A_TakeInventory("Clip", 1)
+			SHTG D 6
+			SHTG C 12 A_PlaySound("sounds/pistolload", CHAN_WEAPON)
+			TNT1 A 0 A_GiveInventory("LoadedShell", 1)
+			TNT1 A 0 A_JumpIfInventory("LoadedShell", 0, "ReloadEnd")
+			TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadLoop")
+		ReloadEnd:
+			SHTG DCBA 4
+			Goto Ready
+		ReloadFail:
+			SHTG A 1
+			Goto Ready
 	}
+}
+
+Actor ShotgunPellet: PistolBullet
+{
+	Damage (12)
+}
+
+Actor LoadedShell : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 4 
+	Ammo.BackpackAmount 0
+	Ammo.BackPackMaxAmount 4
 }

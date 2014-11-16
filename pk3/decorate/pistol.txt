@@ -37,8 +37,8 @@ Actor NewPistol : Weapon Replaces Pistol
 			PIST A -1
 			Stop
 		AltFire:
-			PISG A 1 Offset(-4, 54)
-			PISG A 1 Offset(-10, 68)
+			PISG A 1 Offset(-16, 54)
+			PISG A 1 Offset(-32, 68)
 			RPUN B 1 Offset(0, 32)
 			RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
 			RPUN D 8
@@ -64,7 +64,7 @@ Actor NewPistol : Weapon Replaces Pistol
 			PISG A 1 Offset(0, 58)
 			PISG A 1 Offset(0, 60)
 			PISG A 2 Offset(0, 62)
-			PISG A 18 Offset(0, 64)
+			PISG A 18 Offset(0, 64) A_PlaySound("sounds/pistolload", CHAN_WEAPON)
 			Goto ReloadLoop
 		ReloadLoop:
 			TNT1 A 0 A_TakeInventory("Clip", 1)
@@ -110,7 +110,7 @@ Actor PistolBullet: FastProjectile
 	States
 	{
 		Spawn:
-			MISL A 1 A_SpawnItem("BulletPuff")
+			MISL A 1 A_SpawnItem("TrailPuff")
 			Loop
 		Death:
 			TNT1 A 1 A_SpawnItem("BulletPuff")
@@ -119,4 +119,9 @@ Actor PistolBullet: FastProjectile
 			TNT1 A 1
 			stop
 	}
+}
+
+Actor TrailPuff : BulletPuff
+{
+	Scale 0.3
 }
