@@ -1,0 +1,6 @@
+Actor MeleePuff : BulletPuff //Melee hits should stun zombies and such
+{
+	DamageType "CustomMelee"
+	AttackSound "sounds/POW"
+	+PUFFONACTORS
+}
