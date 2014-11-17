@@ -1,3 +1,6 @@
+#include "decorate/player.txt"
 #include "decorate/melee.txt"
 #include "decorate/pistol.txt"
 #include "decorate/shotgun.txt"
+#include "decorate/chaingun.txt"
+#include "decorate/ssg.txt"
