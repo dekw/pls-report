@@ -7,6 +7,7 @@ Actor NewChaingun : Weapon Replaces Chaingun
 	Inventory.PickupMessage "You got the chaingun!"
 	
 	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.NOAUTOAIM
 	
 	States
 	{
@@ -45,7 +46,7 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			CHGG A 1 Offset(-24, 61)
 			CHGG A 1 Offset(-32, 68)
 			RPUN B 1 Offset(0, 32)
-			RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
+			RPUN C 2 A_CustomPunch(40, 1, 4, "KnockbackPuff")
 			RPUN D 8
 			RPUN C 7
 			Goto Ready

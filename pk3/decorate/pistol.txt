@@ -40,7 +40,7 @@ Actor NewPistol : Weapon Replaces Pistol
 			PISG A 1 Offset(-16, 54)
 			PISG A 1 Offset(-32, 68)
 			RPUN B 1 Offset(0, 32)
-			RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
+			RPUN C 2 A_CustomPunch(40, 1, 4, "KnockbackPuff")
 			RPUN D 8
 			RPUN C 7
 			Goto Ready

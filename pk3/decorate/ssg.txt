@@ -5,8 +5,10 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 	Weapon.AmmoGive 8
 	Weapon.AmmoType "Shell"
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun! "
+	Weapon.Kickback 800 //HEY, YOU *CAN* SET KNOCKBACK!
 	
 	+NOAUTOAIM
+
 	
 	States
 	{
@@ -55,7 +57,7 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 		SHT2 A 1 Offset(-16, 54)
 		SHT2 A 1 Offset(-32, 68)
 		RPUN B 1 Offset(0, 32)
-		RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
+		RPUN C 2 A_CustomPunch(40, 1, 4, "KnockbackPuff")
 		RPUN D 8
 		RPUN C 7
 		Goto Ready

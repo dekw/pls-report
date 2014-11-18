@@ -5,8 +5,8 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 	Weapon.Ammouse1 1
 	Weapon.Ammotype2 "Shell"
 	Inventory.PickupMessage "You got the anti-personnel combat shotgun!"
-	
 	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.NOAUTOAIM
 	
 	States
 	{
@@ -39,7 +39,7 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 			SHTG A 1 Offset(-16, 54)
 			SHTG A 1 Offset(-32, 68)
 			RPUN B 1 Offset(0, 32)
-			RPUN C 2 A_CustomPunch(40, 1, 4, "MeleePuff")
+			RPUN C 2 A_CustomPunch(40, 1, 4, "KnockbackPuff")
 			RPUN D 8
 			RPUN C 7
 			Goto Ready

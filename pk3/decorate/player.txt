@@ -9,7 +9,7 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Player.DisplayName "Marine"
 	Player.CrouchSprite "PLYC"
 	Player.StartItem "NewPistol"
-	Player.StartItem "Fist"
+	Player.StartItem "PidgeonPuncher"
 	Player.StartItem "Clip", 40
 	
 	//Lazy way of not picking up empty weapons (yet)
