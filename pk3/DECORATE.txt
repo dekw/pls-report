@@ -4,3 +4,4 @@
 #include "decorate/shotgun.txt"
 #include "decorate/chaingun.txt"
 #include "decorate/ssg.txt"
+#include "decorate/sparks.txt"

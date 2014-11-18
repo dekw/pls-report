@@ -4,7 +4,7 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 	Weapon.Ammogive2 4
 	Weapon.Ammouse1 1
 	Weapon.Ammotype2 "Shell"
-	Inventory.PickupMessage "You got the combat shotgun!"
+	Inventory.PickupMessage "You got the anti-personnel combat shotgun!"
 	
 	+WEAPON.AMMO_OPTIONAL
 	
