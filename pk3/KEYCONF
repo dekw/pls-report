@@ -1,7 +1,16 @@
 clearplayerclasses
 addplayerclass NewPlayer
+
+//Sidearms on 1
 addslotdefault 1 NewPistol
+
+//Main Weapon Slot/Unarmed on 2
 addslotdefault 2 CombatShotgun
 addslotdefault 2 NewChainGun
 addslotdefault 2 NewSSG
 addslotdefault 2 PidgeonPuncher
+addslotdefault 2 NewRocketLauncher
+
+addmenukey "Reload" Reload
+alias Reload "use ReloadCheckerGiver"
+defaultbind r Reload

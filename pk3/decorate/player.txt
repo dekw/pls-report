@@ -6,6 +6,7 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Height 56
 	Mass 100
 	PainChance 255
+	DamageFactor "Blast", 0.25
 	Player.DisplayName "Marine"
 	Player.CrouchSprite "PLYC"
 	Player.StartItem "NewPistol"
@@ -14,9 +15,10 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Player.StartItem "ReloadCheckerGiver"
 	
 	//Lazy way of not picking up empty weapons (yet)
-	Player.StartItem "LoadedShell", 4
+	Player.StartItem "LoadedShell", 5
 	Player.StartItem "LoadedPistol", 8
-	Player.StartItem "LoadedChaingun", 48
+	Player.StartItem "LoadedChaingun", 64
+	Player.StartItem "LoadedRocket", 2
 	
 	
 	Player.ColorRange 112, 127

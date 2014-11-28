@@ -3,10 +3,10 @@
 Actor NewPistol : Weapon Replaces Pistol
 {
 	Weapon.Ammotype1 "LoadedPistol"	
-	Weapon.Ammogive2 8
 	Weapon.Ammouse1 1
 	Weapon.Ammotype2 "Clip"
-
+	Weapon.Ammogive2 8
+	
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.AMMO_OPTIONAL
 	

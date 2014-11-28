@@ -1,0 +1,17 @@
+#include "zcommon.acs"
+#library "stuff"
+
+SCRIPT 651 (void) //Return speed after lowering a weapon that modifies speed.
+{
+	SetActorProperty(0, APROP_SPEED, 1.0); 
+}
+
+SCRIPT 652 (void) //Chaingun and Rocket Launcher lower speed significantly while carried
+{
+	SetActorProperty(0, APROP_SPEED, 0.65); 
+}
+
+SCRIPT 653 (void) //SSG lowers speed slightly
+{
+	SetActorProperty(0, APROP_SPEED, 0.75);
+}
