@@ -1,0 +1,27 @@
+Actor ReloadCheckerGiver : CustomInventory
+{
+	//-INVENTORY.INVBAR
+	//-INVENTORY.UNDROPPABLE
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			Loop
+		Use:
+			TNT1 A 0 A_GiveInventory("ReloadChecker")
+			Goto Spawn
+	}
+}
+
+Actor ReloadChecker : Ammo //I'm not sure why I use ammo here, but custominventory failed.
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.Icon "TNT1A0"
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			Loop
+	}
+}

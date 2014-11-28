@@ -7,7 +7,7 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun! "
 	Weapon.Kickback 800 //HEY, YOU *CAN* SET KNOCKBACK!
 	
-	+NOAUTOAIM
+	+WEAPON.NOAUTOAIM
 
 	
 	States
@@ -75,6 +75,7 @@ Actor SSGPellet: PistolBullet
 {	
 	Scale 0.2
 	+FORCERADIUSDMG
+	+EXTREMEDEATH
 	Damage (14)
 	Speed 48
 	Decal bulletChip1

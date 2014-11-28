@@ -11,6 +11,7 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Player.StartItem "NewPistol"
 	Player.StartItem "PidgeonPuncher"
 	Player.StartItem "Clip", 40
+	Player.StartItem "ReloadCheckerGiver"
 	
 	//Lazy way of not picking up empty weapons (yet)
 	Player.StartItem "LoadedShell", 4

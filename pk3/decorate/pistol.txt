@@ -1,3 +1,5 @@
+//Most generalizable code will be explained here.
+//I'm commenting a lot because I'm new and thus prone to screwing up.
 Actor NewPistol : Weapon Replaces Pistol
 {
 	Weapon.Ammotype1 "LoadedPistol"	
@@ -11,6 +13,13 @@ Actor NewPistol : Weapon Replaces Pistol
 	States
 	{
 		Ready:
+			/*See the custom keybind for a reload. 
+			* ReloadCheckerGiver does what it says, allowing weapon
+			* ready states to check for its presence and reload.
+			* Easily copy-pastable, just make sure to have reloadstart 
+			* take away the checker, or infinite reloads will happen.
+			**/
+			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
 			PISG A 1 A_WeaponReady
 			Loop
 		Deselect:
@@ -45,10 +54,15 @@ Actor NewPistol : Weapon Replaces Pistol
 			RPUN C 7
 			Goto Ready
 		ReloadStart:
+			TNT1 A 0 A_TakeInventory("ReloadChecker", 1)
+			TNT1 A 0 A_JumpIfInventory("LoadedPistol", 0, "ReloadFail")
 			TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadStart2")
 			Goto ReloadFail
 		ReloadStart2:
-			//Offsets are cancelled without WRF_NOBOB, WRF_NOPRIMARY so you can punch when you want
+			/*Offsets are cancelled without WRF_NOBOB
+			* WRF_NOPRIMARY so you can punch when you want
+			* along with A_WeaponReady allowing you to altfire
+			**/
 			PISG A 1 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			PISG A 1 Offset(0, 34) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			PISG A 1 Offset(0, 36) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
