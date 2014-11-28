@@ -16,9 +16,12 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 			SHTG A 1 A_WeaponReady
 			Loop
 		Deselect:
+			TNT1 A 0 A_Lower
 			SHTG A 1 A_Lower
 			Loop
 		Select:
+			TNT1 A 0 A_TakeInventory("ReloadChecker", 1) 
+			TNT1 A 0 A_Raise
 			SHTG A 1 A_Raise
 			Loop
 		Fire: 

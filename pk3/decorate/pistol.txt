@@ -23,9 +23,13 @@ Actor NewPistol : Weapon Replaces Pistol
 			PISG A 1 A_WeaponReady
 			Loop
 		Deselect:
+			TNT1 A 0 A_Lower
 			PISG A 1 A_Lower
 			Loop
 		Select:
+			TNT1 A 0 A_TakeInventory("ReloadChecker", 1) 
+			//switching weapons while reloading results in the next weapon reloading even if full
+			TNT1 A 0 A_Raise
 			PISG A 1 A_Raise
 			Loop
 		Fire:

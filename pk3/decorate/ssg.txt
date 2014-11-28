@@ -24,6 +24,7 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 		TNT1 A 0 ACS_ExecuteAlways(651)
 		Loop
 	Select:
+		TNT1 A 0 A_TakeInventory("ReloadChecker", 1) 
 		TNT1 A 0 ACS_ExecuteAlways(653)
 		SHT2 A 2 A_Raise
 		Loop
