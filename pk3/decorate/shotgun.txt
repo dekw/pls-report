@@ -2,7 +2,7 @@ Actor CombatShotgun : Weapon Replaces Shotgun
 //Practical shotgun: decent at everything, versatile. Doesn't pack a massive punch.
 {
 	Weapon.Ammotype1 "LoadedShell"	
-	Weapon.Ammogive2 5
+	Weapon.Ammogive2 6
 	Weapon.Ammouse1 1
 	Weapon.Ammotype2 "Shell"
 	Inventory.PickupMessage "You got the anti-personnel combat shotgun!"
@@ -88,7 +88,7 @@ Actor ShotgunPellet: PistolBullet
 Actor LoadedShell : Ammo
 {
 	Inventory.Amount 1
-	Inventory.MaxAmount 5 
+	Inventory.MaxAmount 6 
 	Ammo.BackpackAmount 0
-	Ammo.BackPackMaxAmount 5
+	Ammo.BackPackMaxAmount 6
 }

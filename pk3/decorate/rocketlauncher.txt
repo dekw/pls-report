@@ -102,7 +102,7 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
   }
 }
 
-Actor NewRocket: Rocket
+Actor NewRocket: FastProjectile
 {
 	DamageType Blast
 	Radius 11

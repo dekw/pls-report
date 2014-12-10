@@ -11,7 +11,12 @@ SCRIPT 652 (void) //Chaingun and Rocket Launcher lower speed significantly while
 	SetActorProperty(0, APROP_SPEED, 0.65); 
 }
 
-SCRIPT 653 (void) //SSG lowers speed slightly
+SCRIPT 653 (void) //SSG lowers speed somewhat
 {
 	SetActorProperty(0, APROP_SPEED, 0.75);
+}
+
+SCRIPT 654 (void) //Plasmagun lowers speed slightly
+{
+	SetActorProperty(0, APROP_SPEED, 0.9);
 }

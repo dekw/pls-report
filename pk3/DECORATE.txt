@@ -7,3 +7,4 @@
 #include "decorate/ssg.txt"
 #include "decorate/rocketlauncher.txt"
 #include "decorate/sparks.txt"
+#include "decorate/plasmarifle.txt"

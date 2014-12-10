@@ -10,6 +10,7 @@ addslotdefault 2 NewChainGun
 addslotdefault 2 NewSSG
 addslotdefault 2 PidgeonPuncher
 addslotdefault 2 NewRocketLauncher
+addslotdefault 2 NewPlasmaGun
 
 addmenukey "Reload" Reload
 alias Reload "use ReloadCheckerGiver"

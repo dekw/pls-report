@@ -13,7 +13,8 @@ Actor NewPistol : Weapon Replaces Pistol
 	States
 	{
 		Ready:
-			/*See the custom keybind for a reload. 
+			/*
+			* See the custom keybind for a reload. 
 			* ReloadCheckerGiver does what it says, allowing weapon
 			* ready states to check for its presence and reload.
 			* Easily copy-pastable, just make sure to have reloadstart 
