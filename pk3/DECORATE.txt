@@ -8,3 +8,4 @@
 #include "decorate/rocketlauncher.txt"
 #include "decorate/sparks.txt"
 #include "decorate/plasmarifle.txt"
+#include "decorate/uzi.txt"
