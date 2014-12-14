@@ -44,11 +44,10 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 			TNT1 A 0 A_FireCustomMissile("PlasmaTrailSpawner",0,0,-2,-3)
 			NWPF B 1
 			NWPF C 1
-			NWPF C 1 Offset(-3,36)
-			NWPF C 1 Offset(-6,40)
-			NWPF C 1 Offset(-9,44)
+			NWPF C 1 Offset(-6,38)
+			NWPF C 1 Offset(-9,43)
 			NWPF C 1 Offset(-12,48)
-			NWPF D 8 Offset(-12,48)
+			NWPF D 6 Offset(-12,48)
 			NWPF C 1 Offset(-12,48)
 			NWPF C 1 Offset(-11,45)
 			NWPF C 1 Offset(-10,42)
