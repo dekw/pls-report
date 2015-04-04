@@ -3,6 +3,7 @@ addplayerclass NewPlayer
 
 //Sidearms on 1
 addslotdefault 1 NewPistol
+addslotdefault 1 Uzi
 
 //Main Weapon Slot/Unarmed on 2
 addslotdefault 2 CombatShotgun
@@ -12,6 +13,12 @@ addslotdefault 2 PidgeonPuncher
 addslotdefault 2 NewRocketLauncher
 addslotdefault 2 NewPlasmaGun
 
+//Just so it's not weird, not touching this atm
+addslotdefault 3 BFG9000
+
 addmenukey "Reload" Reload
+addmenukey "Drop Weapon" DropWeap
 alias Reload "use ReloadCheckerGiver"
+alias DropWeap "use DropCheckerGiver"
 defaultbind r Reload
+defaultbind f DropWeap // not the same as actually dropping weapon, which I need to disable

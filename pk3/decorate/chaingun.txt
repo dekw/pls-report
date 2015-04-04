@@ -2,11 +2,12 @@ Actor NewChaingun : Weapon Replaces Chaingun
 //Lots of firepower, at cost of speed and versatility
 {
 	Weapon.Ammotype1 "LoadedChaingun"	
-	Weapon.Ammogive2 24
+	Weapon.Ammogive2 0
 	Weapon.Ammouse1 1
 	Weapon.Ammotype2 "Clip"
 	Inventory.PickupMessage "You got the chaingun!"
 	
+	+INVENTORY.UNDROPPABLE
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.NOAUTOAIM
 	
@@ -14,20 +15,30 @@ Actor NewChaingun : Weapon Replaces Chaingun
 	{
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
+			TNT1 A 0 A_JumpIfInventory("DropChecker", 1, "Drop")
 			CHGG A 1 A_WeaponReady
 			Loop
+		Drop:
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
+			CHGG A 1 ACS_ExecuteAlways(651)
+			TNT1 A 0 A_GiveInventory("PidgeonPuncher", 1)
+			TNT1 A 0 A_SpawnItemEx("ChaingunPickup", 64, 0, 18, 18, 0, 0, 0)
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
+			TNT1 A 0 A_TakeInventory("NewChaingun", 1)
+			Goto Ready
 		Deselect:
-			CHGG A 3 A_Lower
-			CHGG B 3 A_Lower
-			CHGG A 3 A_Lower
-			CHGG B 3 A_Lower
-			TNT1 A 0 ACS_ExecuteAlways(651) //No clue how to execute at the end of deselect so I put it after more frames than needed by loop
+			CHGG A 1 A_Lower
+			CHGG A 1 A_Lower
+			CHGG B 1 A_Lower
+			CHGG B 1 A_Lower
 			Loop
 		Select:
 			TNT1 A 0 A_TakeInventory("ReloadChecker", 1) 
 			TNT1 A 0 ACS_ExecuteAlways(652)
-			CHGG A 2 A_Raise
-			CHGG B 2 A_Raise
+			CHGG A 1 A_Raise
+			CHGG A 1 A_Raise
+			CHGG B 1 A_Raise
+			CHGG B 1 A_Raise
 			Loop
 		Fire:
 			TNT1 A 0 A_JumpIfNoAmmo("ReloadStart")
@@ -143,3 +154,29 @@ Actor CGTrailPuff : TrailPuff
 {
 	Scale 0.1
 }
+
+Actor ChaingunPickup: CustomInventory Replaces Chaingun
+{
+	Inventory.PickupMessage "You got the chaingun!"
+	States
+	{
+		Spawn:
+		MGUN A -1
+		Stop
+		
+		Pickup:
+		TNT1 A 0 A_JumpIfInventory("CombatShotgun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewChaingun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewRocketLauncher", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewSSG", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
+		TNT1 A 0 A_GiveInventory("NewChaingun")
+		Stop
+		
+		PickupFail:
+		MGUN A 1
+		Fail
+	}
+}
+
+Actor ChaingunPickup2: ChaingunPickup Replaces NewChaingun {} 

@@ -5,7 +5,9 @@ Actor PidgeonPuncher : DoomWeapon Replaces Fist
   Tag "$TAG_FIST"
   +WEAPON.MELEEWEAPON
   +WEAPON.NOAUTOFIRE
-  //THIS AIN'T NO WIMPY WEAPON, GET OUTTA HERE FLAG
+  +WEAPON.NOALERT
+  +INVENTORY.UNDROPPABLE
+  
   Weapon.Kickback 100
   States
   {
@@ -17,6 +19,7 @@ Actor PidgeonPuncher : DoomWeapon Replaces Fist
 		PUNG A 0 A_Lower
 		Loop
 	Select:
+		TNT1 A 0 ACS_ExecuteAlways(651)
 		PUNG A 1 A_Raise
 		PUNG A 0 A_Raise
 		Loop
@@ -75,6 +78,13 @@ Actor KnockbackPuff : MeleePuff
 	AttackSound "sounds/WHACK"
 	SeeSound "sounds/WHACK"
 }
+/*
+* You get inventory item combo when attacking, and then have it taken if you're
+* idle for long enough, or if you attack again at the right time.
+* This allows for basic combos in melee (RRR and RRL are the only ones in atm)
+*/
+
+
 
 Actor Combo : Ammo //I DON'T KNOW HOW THE HELL TO MAKE IT WORK WITH INVENTORY IT JUST DOESN"T I'M SORRY
 {

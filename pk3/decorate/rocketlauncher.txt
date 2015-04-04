@@ -2,9 +2,11 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 {
 	Weapon.Ammotype1 "LoadedRocket"	
 	Weapon.Ammouse1 1
-	Weapon.Ammogive2 2
+	Weapon.Ammogive2 0
 	Weapon.Ammotype2 "RocketAmmo"
 	Inventory.PickupMessage "You got the rocket launcher!"
+	
+	+INVENTORY.UNDROPPABLE
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
@@ -13,6 +15,7 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 	{
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
+			TNT1 A 0 A_JumpIfInventory("DropChecker", 1, "Drop")
 			MISG A 1 A_WeaponReady
 			Loop
 		Deselect:
@@ -23,7 +26,17 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 			MISG A 2 A_Lower
 			TNT1 A 0 ACS_ExecuteAlways(651)
 			Loop
+		Drop:
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
+			CHGG A 1 ACS_ExecuteAlways(651)
+			TNT1 A 0 A_GiveInventory("PidgeonPuncher", 1)
+			TNT1 A 0 A_SpawnItemEx("RLPickup", 64, 0, 18, 18, 0, 0, 0)
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
+			TNT1 A 0 A_TakeInventory("NewRocketLauncher", 1)
+			Goto Ready
 		Select:
+			TNT1 A 0 ACS_ExecuteAlways(651)
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
 			TNT1 A 0 A_TakeInventory("ReloadChecker", 1) 
 			TNT1 A 0 ACS_ExecuteAlways(652)
 			MISG A 2 A_Raise
@@ -193,3 +206,30 @@ Actor LoadedRocket : Ammo
 	Ammo.BackpackAmount 0
 	Ammo.BackPackMaxAmount 2
 }
+
+Actor RLPickup: CustomInventory Replaces RocketLauncher
+{
+	Inventory.PickupMessage "You got the rocket launcher!"
+	States
+	{
+		Spawn:
+		LAUN A -1
+		Stop
+		
+		Pickup:
+		TNT1 A 0 A_JumpIfInventory("CombatShotgun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewChaingun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewRocketLauncher", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewSSG", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
+		TNT1 A 0 A_GiveInventory("NewRocketLauncher")
+		Stop
+		
+		PickupFail:
+		LAUN A 1
+		Fail
+	}
+}
+
+
+Actor RLPickup2: RLPickup Replaces NewRocketLauncher{} 
