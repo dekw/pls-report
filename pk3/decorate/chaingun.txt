@@ -4,7 +4,7 @@ Actor NewChaingun : Weapon Replaces Chaingun
 	Weapon.Ammotype1 "LoadedChaingun"	
 	Weapon.Ammogive2 0
 	Weapon.Ammouse1 1
-	Weapon.Ammotype2 "Clip"
+	Weapon.Ammotype2 "NewClip"
 	Inventory.PickupMessage "You got the chaingun!"
 	
 	+INVENTORY.UNDROPPABLE
@@ -25,6 +25,8 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			TNT1 A 0 A_SpawnItemEx("ChaingunPickup", 64, 0, 18, 18, 0, 0, 0)
 			TNT1 A 0 A_TakeInventory("DropChecker", 1)
 			TNT1 A 0 A_TakeInventory("NewChaingun", 1)
+			//Give dual fists back when you have no heavy weapon.
+			TNT1 A 0 A_GiveInventory("PidgeonPuncher")
 			Goto Ready
 		Deselect:
 			CHGG A 1 A_Lower
@@ -75,7 +77,7 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			Stop
 		ReloadStart:
 			TNT1 A 0 A_TakeInventory("ReloadChecker", 1)
-			TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadStart2")
+			TNT1 A 0 A_JumpIfInventory("NewClip", 1, "ReloadStart2")
 			Goto ReloadFail
 		ReloadStart2:
 			CHGG A 2 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
@@ -97,10 +99,10 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			CHGG A 18 Offset(0, 64) A_PlaySound("misc/w_pkup", CHAN_WEAPON)
 			Goto ReloadLoop
 		ReloadLoop:
-			TNT1 A 0 A_TakeInventory("Clip", 1)
+			TNT1 A 0 A_TakeInventory("NewClip", 1)
 			TNT1 A 0 A_GiveInventory("LoadedChaingun", 1)
 			TNT1 A 0 A_JumpIfInventory("LoadedChaingun", 0, "ReloadEnd")
-			TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+			TNT1 A 0 A_JumpIfInventory("NewClip", 1, "ReloadLoop")
 		ReloadEnd:
 			CHGG B 2 Offset(0, 62) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			CHGG A 2 Offset(0, 59) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
@@ -171,6 +173,8 @@ Actor ChaingunPickup: CustomInventory Replaces Chaingun
 		TNT1 A 0 A_JumpIfInventory("NewSSG", 1, "PickupFail")
 		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
 		TNT1 A 0 A_GiveInventory("NewChaingun")
+		//Take unarmed away with heavy weapon, give it back without.
+		TNT1 A 0 A_TakeInventory("PidgeonPuncher", 1)
 		Stop
 		
 		PickupFail:
