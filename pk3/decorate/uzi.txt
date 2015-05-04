@@ -17,6 +17,7 @@ Actor Uzi : Weapon replaces Chainsaw
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
 			UZIG A 1 A_WeaponReady
+			TNT1 A 0 A_TakeInventory("DropChecker")
 			Loop
 		Deselect:
 			UZIG D 1 A_Lower

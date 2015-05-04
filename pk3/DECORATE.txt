@@ -9,3 +9,4 @@
 #include "decorate/sparks.txt"
 #include "decorate/plasmarifle.txt"
 #include "decorate/uzi.txt"
+#include "actors/zombieman.txt"
