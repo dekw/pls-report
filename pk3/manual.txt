@@ -1,0 +1,37 @@
+CUSTOM CONTROLS:
+RELOAD: default bound to R. If it doesn't work, then go into the console and put in "Bind R reload", where R is whatever key you want.
+DROP WEAPON: default bound to R. If it doesn't work, then go into the console and put in "Bind F DropWeap", where F is whatever key you want. 
+
+
+
+
+HOW THE WAD WORKS
+You can only carry one heavy weapon at a time. Unarmed is buffed, each weapon is generally stronger than its unrestricted counterpart. Unarmed has a very basic combo system (primary primary primary and primary secondary have their own attack states).
+
+You can use drop weapon while using full unarmed to perform a disarm, which will only work on zombies, but will kill them and take their weapon (except zombieman, since they have no parallel weapon for you to use; they just die).
+
+The pistol and the uzi are sidearms, so they have no carrying restrictions. The BFG is untouched and can be carried with other stuff, since BFGfest maps would otherwise be... a mess with this mod. Still will be, but hey.
+
+All weapons except the BFG have a strong unarmed attack as their alt-fire.
+
+Ammo is more limited in carrying capacity, and ammo pickups correspond to their heavy weapon's clip size now.
+
+
+
+
+WEAPONS:
+Pistol: buffed immensely. Semi-automatic. Sidearm.
+
+Uzi: replaces chainsaw. Full-auto, lower damage per bullet than pistol.
+
+Shotgun: More accurate, faster fire rate. Versatile low-tier weapon.
+
+Chaingun: Takes some time to wind up, unparalleled fire rate and DPS. Slow to carry.
+
+Super Shotgun: Elephant gun. You want stopping power? Too bad, you can't stop something when it's in PIECES.
+
+Rocket Launcher: Longer windup, bigger explosions, heavy munitions, slow to carry.
+
+Plasma Rifle: High-tier versatile weapon. Good damage, good accuracy, high ammo efficiency.
+
+BFG: Unchanged at the moment, except uses less ammo to match ammo system.
