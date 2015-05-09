@@ -212,6 +212,7 @@ Actor LoadedRocket : Ammo
 Actor RLPickup: CustomInventory Replaces RocketLauncher
 {
 	Inventory.PickupMessage "You got the rocket launcher!"
+	Inventory.PickupSound "misc/w_pickup"
 	States
 	{
 		Spawn:
