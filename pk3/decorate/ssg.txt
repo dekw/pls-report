@@ -1,7 +1,7 @@
 Actor NewSSG : Weapon Replaces SuperShotgun
 //This gun is meant to be over-the-top -- ergo recoil and all that stuff
 {
-	Weapon.AmmoUse 4
+	Weapon.AmmoUse 2
 	Weapon.AmmoGive 0
 	Weapon.AmmoType "NewShell"
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun!"
@@ -105,7 +105,7 @@ Actor SSGPellet: PistolBullet
 Actor SSGpickup: CustomInventory Replaces SuperShotgun
 {
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun!"
-	Inventory.PickupSound "misc/w_pickup"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 		Spawn:

@@ -3,7 +3,7 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 	Weapon.Ammotype1 "LoadedRocket"	
 	Weapon.Ammouse1 1
 	Weapon.Ammogive2 0
-	Weapon.Ammotype2 "RocketAmmo"
+	Weapon.Ammotype2 "NewRocketAmmo"
 	Inventory.PickupMessage "You got the rocket launcher!"
 	
 	+INVENTORY.UNDROPPABLE
@@ -69,7 +69,7 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 		ReloadStart:
 			TNT1 A 0 A_TakeInventory("ReloadChecker", 1)
 			TNT1 A 0 A_JumpIfInventory("LoadedRocket", 0, "ReloadFail")
-			TNT1 A 0 A_JumpIfInventory("RocketAmmo", 1, "ReloadStart2")
+			TNT1 A 0 A_JumpIfInventory("NewRocketAmmo", 1, "ReloadStart2")
 			Goto ReloadFail
 		ReloadStart2:
 			MISG A 1 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
@@ -93,10 +93,10 @@ ACTOR NewRocketLauncher : DoomWeapon Replaces RocketLauncher
 			MISG A 20 Offset(0, 64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			Goto ReloadLoop
 		ReloadLoop:
-			TNT1 A 0 A_TakeInventory("RocketAmmo", 1)
+			TNT1 A 0 A_TakeInventory("NewRocketAmmo", 1)
 			TNT1 A 0 A_GiveInventory("LoadedRocket", 1)
 			TNT1 A 0 A_JumpIfInventory("LoadedRocket", 0, "ReloadEnd")
-			TNT1 A 0 A_JumpIfInventory("RocketAmmo", 1, "ReloadLoop")
+			TNT1 A 0 A_JumpIfInventory("NewRocketAmmo", 1, "ReloadLoop")
 		ReloadFail:
 			MISG A 1
 			Goto Ready
@@ -212,7 +212,7 @@ Actor LoadedRocket : Ammo
 Actor RLPickup: CustomInventory Replaces RocketLauncher
 {
 	Inventory.PickupMessage "You got the rocket launcher!"
-	Inventory.PickupSound "misc/w_pickup"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 		Spawn:
@@ -238,3 +238,31 @@ Actor RLPickup: CustomInventory Replaces RocketLauncher
 
 
 Actor RLPickup2: RLPickup Replaces NewRocketLauncher{} 
+
+ACTOR NewRocketAmmo : Ammo Replaces RocketAmmo
+{
+  Inventory.PickupMessage "Picked up two rockets."
+  Inventory.Amount 2
+  Inventory.MaxAmount 8
+  Ammo.BackpackAmount 2
+  Ammo.BackpackMaxAmount 10
+  Inventory.Icon "SHELA0"
+  States
+  {
+  Spawn:
+    SHEL A -1
+    Stop
+  }
+}
+
+ACTOR NewRocketBox : NewRocketAmmo replaces RocketBox
+{
+  Inventory.PickupMessage "$GOTROCKBOX" // "Picked up a box of rockets."
+  Inventory.Amount 4
+  States
+  {
+  Spawn:
+    SBOX A -1
+    Stop
+  }
+}
