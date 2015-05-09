@@ -160,7 +160,6 @@ Actor CGTrailPuff : TrailPuff
 Actor ChaingunPickup: CustomInventory Replaces Chaingun
 {
 	Inventory.PickupMessage "You got the chaingun!"
-	Inventory.PickupSound "misc/w_pickup"
 	States
 	{
 		Spawn:

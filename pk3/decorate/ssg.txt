@@ -105,7 +105,6 @@ Actor SSGPellet: PistolBullet
 Actor SSGpickup: CustomInventory Replaces SuperShotgun
 {
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun!"
-	Inventory.PickupSound "misc/w_pickup"
 	States
 	{
 		Spawn:

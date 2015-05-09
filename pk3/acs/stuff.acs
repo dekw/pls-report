@@ -20,8 +20,3 @@ SCRIPT 654 (void) //Plasmagun lowers speed slightly
 {
 	SetActorProperty(0, APROP_SPEED, 0.9);
 }
-
-Script 655 (void) //Set weapon
-{
-	SetWeapon("CombatShotgun");
-}

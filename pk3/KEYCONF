@@ -13,7 +13,7 @@ addslotdefault 2 PidgeonPuncher
 addslotdefault 2 NewRocketLauncher
 addslotdefault 2 NewPlasmaGun
 
-//Just so it's not weird, not touching this atm -- EDIT: i did touch ammo usage
+//Just so it's not weird, not touching this atm
 addslotdefault 3 BFG9000
 
 addmenukey "Reload" Reload
@@ -21,4 +21,4 @@ addmenukey "Drop Weapon" DropWeap
 alias Reload "use ReloadCheckerGiver"
 alias DropWeap "use DropCheckerGiver"
 defaultbind r Reload
-defaultbind f DropWeap // not the same as actually dropping weapon, which I had to disable
+defaultbind f DropWeap // not the same as actually dropping weapon, which I need to disable
