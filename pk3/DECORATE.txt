@@ -10,3 +10,4 @@
 #include "decorate/plasmarifle.txt"
 #include "decorate/uzi.txt"
 #include "actors/zombieman.txt"
+#include "actors/shotgunguy.txt"
