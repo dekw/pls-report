@@ -227,6 +227,7 @@ Actor LoadedPlasma : Ammo
 Actor PGPickup: CustomInventory Replaces PlasmaRifle
 {
 	Inventory.PickupMessage "You got the Plasma Rifle!"
+	Inventory.PickupSound "misc/w_pickup"s
 	States
 	{
 		Spawn:

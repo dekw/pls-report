@@ -111,6 +111,7 @@ Actor LoadedShell : Ammo
 Actor ShotgunPickup: CustomInventory Replaces Shotgun
 {
 	Inventory.PickupMessage "You got the anti-personnel combat shotgun!"
+	Inventory.PickupSound "misc/w_pickup"
 	/*United*/ States /*of America*/ //not where I actually live, though
 	{
 		Spawn:

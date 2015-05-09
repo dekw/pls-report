@@ -15,7 +15,7 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Player.StartItem "ReloadCheckerGiver"
 	Player.StartItem "DropCheckerGiver"
 	
-	//Lazy way of not picking up empty weapons (yet)
+	//Lazy way of not picking up empty weapons
 	Player.StartItem "LoadedShell", 6
 	Player.StartItem "LoadedPistol", 8
 	Player.StartItem "LoadedChaingun", 64
