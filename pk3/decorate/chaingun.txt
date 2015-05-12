@@ -52,9 +52,11 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			CHGG AB 3 A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 		Hold:
 			TNT1 A 0 A_JumpIfNoAmmo("ReloadStart")
+			TNT1 A 0 A_GunFlash
 			TNT1 A 0 A_PlaySound("weapons/pistol", CHAN_WEAPON)
 			CHGG A 3 A_FireCustomMissile("ChaingunBullet", (random(-300, 300)/100.0), 1, 0, 0, 0, random(-200, 200)/100.0)
 			TNT1 A 0 A_PlaySound("weapons/pistol", CHAN_WEAPON)
+			TNT1 A 0 A_GunFlash
 			CHGG B 3 A_FireCustomMissile("ChaingunBullet", (random(-300, 300)/100.0), 1, 0, 0, 0, random(-200, 200)/100.0)
 			CHGG B 0 A_ReFire
 			Goto Ready

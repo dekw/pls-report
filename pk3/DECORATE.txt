@@ -11,3 +11,4 @@
 #include "decorate/uzi.txt"
 #include "actors/zombieman.txt"
 #include "actors/shotgunguy.txt"
+#include "actors/chaingunguy.txt"

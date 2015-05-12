@@ -8,12 +8,12 @@ SCRIPT 651 (void) //Return speed after lowering a weapon that modifies speed.
 
 SCRIPT 652 (void) //Chaingun and Rocket Launcher lower speed significantly while carried
 {
-	SetActorProperty(0, APROP_SPEED, 0.65); 
+	SetActorProperty(0, APROP_SPEED, 0.7); 
 }
 
 SCRIPT 653 (void) //SSG lowers speed somewhat
 {
-	SetActorProperty(0, APROP_SPEED, 0.75);
+	SetActorProperty(0, APROP_SPEED, 0.8);
 }
 
 SCRIPT 654 (void) //Plasmagun lowers speed slightly
@@ -24,4 +24,29 @@ SCRIPT 654 (void) //Plasmagun lowers speed slightly
 Script 655 (void) //Set weapon
 {
 	SetWeapon("CombatShotgun");
+}
+
+Script 656 (void) //Set weapon
+{
+	SetWeapon("NewChaingun");
+}
+
+Script 657 (void) //Set weapon
+{
+	SetWeapon("NewSSG");
+}
+
+Script 658 (void) //Set weapon
+{
+	SetWeapon("NewPlasmagun");
+}
+
+Script 659 (void) //Set weapon
+{
+	SetWeapon("NewRocketLauncher");
+}
+
+Script 660 (void) //Set weapon
+{
+	SetWeapon("PidgeonPuncher");
 }

@@ -1,0 +1,100 @@
+ACTOR NewChaingunGuy Replaces ChaingunGuy
+{
+  Health 100
+  Radius 20
+  Height 56
+  Mass 100
+  Speed 6
+  PainChance 170
+  PainChance "Disarm", 255
+  Monster
+  +FLOORCLIP
+  SeeSound "chainguy/sight"
+  PainSound "chainguy/pain"
+  DeathSound "chainguy/death"
+  ActiveSound "chainguy/active"
+  AttackSound "chainguy/attack"
+  Obituary "$OB_CHAINGUY"
+  Dropitem "Clip", 2
+  States
+  {
+  Spawn:
+    CPOS AB 10 A_Look
+    Loop
+  See:
+    CPOS AABBCCDD 3 A_Chase
+    Loop
+  Missile:
+	CPOS E 6 A_FaceTarget
+	TNT1 A 0 A_PlaySound("misc/w_pkup", CHAN_WEAPON)
+	CPOS E 5 A_FaceTarget
+	CPOS E 4 A_FaceTarget
+	CPOS E 3 A_FaceTarget
+	CPOS E 3 A_FaceTarget
+    Goto Missile2
+  Missile2:
+	TNT1 A 0 A_PlaySound("chainguy/attack", CHAN_WEAPON)
+    CPOS E 3 A_CustomMissile("ZombieBullet3", 27, 10, (random(-600, 600)/100.0), 0, random(-400, 400)/100.0)
+	TNT1 A 0 A_PlaySound("chainguy/attack", CHAN_WEAPON)
+	CPOS F 3 A_CustomMissile("ZombieBullet3", 27, 10, (random(-600, 600)/100.0), 0, random(-400, 400)/100.0)
+	TNT1 A 0 A_CPosRefire
+	Goto Missile2
+  Pain.Disarm:
+	TNT1 A 0 A_ChangeFlag("Invulnerable", true)
+	CPOS G 6
+    CPOS G 6 A_Pain
+	TNT1 A 0 A_GiveToTarget("ChaingunGiver", 1)
+	TNT1 A 0 A_ChangeFlag("NoBlockMap", true)
+    Goto Death
+  Pain:
+    CPOS G 3
+    CPOS G 3 A_Pain
+    Goto See
+  Death:
+    CPOS H 5
+    CPOS I 5 A_Scream
+    CPOS J 5 A_NoBlocking
+    CPOS KLM 5
+    CPOS N -1
+    Stop
+  XDeath:
+    CPOS O 5 
+    CPOS P 5 A_XScream
+    CPOS Q 5 A_NoBlocking
+    CPOS RS 5
+    CPOS T -1
+    Stop
+  Raise:
+    CPOS N 5
+    CPOS MLKJIH 5
+    Goto See
+  }
+}
+
+Actor ChaingunGiver: CustomInventory
+//The actor you get to get given the shotgun for disarming a zombie.
+{
+	+INVENTORY.AUTOACTIVATE
+	States
+	{
+		Use:
+		/* 
+		*  All of the pickup failing isn't strictly necessary, 
+		*  but I don't want to deal with what happens in the
+		*  case that you're running over a weapon pickup as 
+		*  you disarm, or any other silly edge cases.
+		*/
+		TNT1 A 0 A_JumpIfInventory("CombatShotgun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewChaingun", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewRocketLauncher", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewSSG", 1, "PickupFail")
+		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
+		TNT1 A 0 A_PlaySound("misc/w_pkup")
+		TNT1 A 0 A_GiveInventory("NewChaingun")
+		TNT1 A 0 A_TakeInventory("PidgeonPuncher", 1)
+		TNT1 A 0 ACS_ExecuteAlways(655)
+		Stop
+		PickupFail:
+		TNT1 A 0 A_SpawnItemEx("ChaingunPickup", 64, 0, 18, 18, 0, 0, 0)
+	}
+}
