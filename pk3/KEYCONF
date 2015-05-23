@@ -14,7 +14,7 @@ addslotdefault 2 NewRocketLauncher
 addslotdefault 2 NewPlasmaGun
 
 //Just so it's not weird, not touching this atm -- EDIT: i did touch ammo usage
-addslotdefault 3 BFG9000
+addslotdefault 3 NewBFG
 
 addmenukey "Reload" Reload
 addmenukey "Drop Weapon" DropWeap
