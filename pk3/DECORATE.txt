@@ -12,3 +12,4 @@
 #include "actors/zombieman.txt"
 #include "actors/shotgunguy.txt"
 #include "actors/chaingunguy.txt"
+#include "actors/cacodemon.txt"

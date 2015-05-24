@@ -1,0 +1,66 @@
+ACTOR NewCacodemon Replaces Cacodemon
+{
+  Health 300
+  Radius 26
+  Height 54
+  Mass 421 //DENIED
+  Scale 0.85
+  Speed 12
+  PainChance 128
+  PainChance "CustomMelee", 255
+  PainChance "Knockback", 255
+  Monster
+  +FLOAT
+  +NOGRAVITY
+  SeeSound "caco/sight"
+  PainSound "caco/pain"
+  DeathSound "caco/death"
+  ActiveSound "caco/active"
+  Obituary "$OB_CACO"
+  HitObituary "$OB_CACOHIT"
+  States
+  {
+  Spawn:
+    HEAD A 10 A_Look
+    Loop
+  See:
+    HEAD A 3 A_Chase
+    Loop
+  Missile:
+	TNT1 A 0 A_JumpIfCloser(192, "Melee")
+    HEAD BC 5 A_FaceTarget
+    HEAD D 5 Bright A_HeadAttack
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 ThrustThing(angle*256/360, 3, 0, 0) //move a little forward
+    Goto See
+  Melee:
+	TNT1 A 0 A_FaceTarget
+    TNT1 A 0 ThrustThing(angle*256/360, 6, 0, 0) //lunge forward
+	HEAD B 4 A_FaceTarget
+	HEAD C 4 A_FaceTarget
+	TNT1 A 0 A_PlaySound("demon/melee")
+	HEAD D 4 A_CustomMeleeAttack(random(1, 6) * 10)
+	HEAD A 4
+	Goto See
+  Pain.Knockback:
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 ThrustThing(angle*256/360+128, 6, 0, 0) //thrust back
+	Goto Pain
+  Pain:
+    HEAD E 3
+    HEAD E 3 A_Pain
+    HEAD F 6
+    Goto See
+  Death:
+    HEAD G 8
+    HEAD H 8 A_Scream
+    HEAD IJ 8
+    HEAD K 8 A_NoBlocking
+    HEAD L -1 A_SetFloorClip
+    Stop
+  Raise:
+    HEAD L 8 A_UnSetFloorClip
+    HEAD KJIHG 8
+    Goto See
+  }
+}
