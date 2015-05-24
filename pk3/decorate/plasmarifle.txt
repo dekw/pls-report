@@ -42,9 +42,9 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 			TNT1 A 0 A_SpawnItemEx("PGPickup", 64, 0, 18, 18, 0, 0, 0)
 			//trying sloppily to make spamming drop/reload not break stuff
 			TNT1 A 0 A_TakeInventory("DropChecker", 1)
-			TNT1 A 0 A_TakeInventory("NewPlasmaGun", 1)
 			//Give dual fists back when you have no heavy weapon.
-			TNT1 A 0 A_GiveInventory("PidgeonPuncher")
+			TNT1 A 0 ACS_ExecuteAlways(660) //switch to unarmed.
+			TNT1 A 0 A_TakeInventory("NewPlasmaGun", 1)
 			Goto Ready
 		Select:
 			TNT1 A 0 ACS_ExecuteAlways(651) //see: feeling better
@@ -242,6 +242,7 @@ Actor PGPickup: CustomInventory Replaces PlasmaRifle
 		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
 		TNT1 A 0 A_GiveInventory("NewPlasmaGun")
 		//Take unarmed away with heavy weapon, give it back without.
+		TNT1 A 0 ACS_ExecuteAlways(658) //Switch to acquired weapon
 		TNT1 A 0 A_TakeInventory("PidgeonPuncher", 1)
 		Stop
 		

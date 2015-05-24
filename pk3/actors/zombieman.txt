@@ -8,6 +8,8 @@ ACTOR NewZombieMan Replaces Zombieman
   Speed 12
   PainChance 200
   PainChance "Disarm", 255
+  PainChance "CustomMelee", 255
+  PainChance "Knockback", 255
   Monster
   +FLOORCLIP
   SeeSound "grunt/sight"

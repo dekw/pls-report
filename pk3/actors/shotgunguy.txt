@@ -7,6 +7,8 @@ ACTOR NewShotgunGuy Replaces ShotgunGuy
   Speed 12
   PainChance 170
   PainChance "Disarm", 255
+  PainChance "CustomMelee", 255
+  PainChance "Knockback", 255
   Monster
   +FLOORCLIP
   SeeSound "shotguy/sight"

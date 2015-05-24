@@ -24,9 +24,9 @@ Actor NewChaingun : Weapon Replaces Chaingun
 			TNT1 A 0 A_GiveInventory("PidgeonPuncher", 1)
 			TNT1 A 0 A_SpawnItemEx("ChaingunPickup", 64, 0, 18, 18, 0, 0, 0)
 			TNT1 A 0 A_TakeInventory("DropChecker", 1)
-			TNT1 A 0 A_TakeInventory("NewChaingun", 1)
 			//Give dual fists back when you have no heavy weapon.
-			TNT1 A 0 A_GiveInventory("PidgeonPuncher")
+			TNT1 A 0 ACS_ExecuteAlways(660) //switch to unarmed.
+			TNT1 A 0 A_TakeInventory("NewChaingun", 1)
 			Goto Ready
 		Deselect:
 			CHGG A 1 A_Lower
@@ -176,6 +176,7 @@ Actor ChaingunPickup: CustomInventory Replaces Chaingun
 		TNT1 A 0 A_JumpIfInventory("NewSSG", 1, "PickupFail")
 		TNT1 A 0 A_JumpIfInventory("NewPlasmaGun", 1, "PickupFail")
 		TNT1 A 0 A_GiveInventory("NewChaingun")
+		TNT1 A 0 ACS_ExecuteAlways(656) //Switch to acquired weapon
 		//Take unarmed away with heavy weapon, give it back without.
 		TNT1 A 0 A_TakeInventory("PidgeonPuncher", 1)
 		Stop
