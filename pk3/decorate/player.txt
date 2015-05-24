@@ -23,7 +23,7 @@ Actor NewPlayer : PlayerPawn replaces DoomPlayer
 	Player.StartItem "LoadedRocket", 2
 	Player.StartItem "LoadedPlasma", 16
 	Player.StartItem "LoadedUzi", 32
-	
+	Player.StartItem "LoadedSSG", 2
 	Player.ColorRange 112, 127
 	States
 	{

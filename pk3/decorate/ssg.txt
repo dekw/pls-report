@@ -1,28 +1,32 @@
 Actor NewSSG : Weapon Replaces SuperShotgun
 //This gun is meant to be over-the-top -- ergo recoil and all that stuff
 {
-	Weapon.AmmoUse 2
+	Weapon.AmmoUse1 2
 	Weapon.AmmoGive 0
-	Weapon.AmmoType "NewShell"
+	Weapon.AmmoType1 "LoadedSSG"
+	Weapon.Ammotype2 "NewShell"
 	Inventory.PickupMessage "You got the 'Piecemaker' shotgun!"
 	Weapon.Kickback 800 //HEY, YOU *CAN* SET KNOCKBACK!
 	
 	+INVENTORY.UNDROPPABLE
 	+WEAPON.NOAUTOAIM
-
+	+WEAPON.AMMO_OPTIONAL
 	
 	States
 	{
 		Ready:
+			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
 			SHT2 A 1 A_WeaponReady
 			TNT1 A 0 A_JumpIfInventory("DropChecker", 1, "Drop")
 			Loop
 		Deselect:
+			TNT1 A 0 A_TakeInventory("DropChecker", 1) //swiper no reloading
 			SHT2 A 2 A_Lower
 			SHT2 A 2 A_Lower
 			SHT2 A 2 A_Lower
 			SHT2 A 2 A_Lower
 			SHT2 A 2 A_Lower
+			TNT1 A 0 A_TakeInventory("DropChecker", 1)
 			TNT1 A 0 ACS_ExecuteAlways(651)
 			Loop
 		Drop:
@@ -42,6 +46,7 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 			SHT2 A 2 A_Raise
 			Loop
 		Fire:
+		    TNT1 A 0 A_JumpIfNoAmmo("ReloadStart")
 			SHT2 A 3
 			//38 Pellets inc -- YES I KNOW I OBSESSIVELY MAKE 0 TIC FRAMES TNT1 SHUT UP
 			TNT1 A 0 A_PlaySound ("weapons/sshotf", CHAN_WEAPON)
@@ -52,21 +57,47 @@ Actor NewSSG : Weapon Replaces SuperShotgun
 			TNT1 A 0 A_FireCustomMissile("SSGPellet", (random(-1500, 1500)/100.0), 1, 0, 0, 0, (random(-800, 800)/100.0))
 			SHT2 A 7 A_Recoil(25.0)
 			SHT2 B 3
-			SHT2 C 29 A_CheckReload
-			SHT2 D 6 A_OpenShotgun2
-			SHT2 E 4
-			SHT2 F 5 A_LoadShotgun2
-			SHT2 G 7
-			SHT2 H 8 A_CloseShotgun2
-			SHT2 B 3
-			SHT2 C 4
-			SHT2 D 5 A_OpenShotgun2
-			SHT2 E 4
-			SHT2 F 5 A_LoadShotgun2
-			SHT2 G 6
-			SHT2 H 8 A_CloseShotgun2
-			SHT2 A 5 
+			SHT2 C 29 A_WeaponReady(WRF_NOPRIMARY)
+			//SHT2 D 6 A_OpenShotgun2
+			//SHT2 E 4
+			//SHT2 F 5 A_LoadShotgun2
+			//SHT2 G 7
+			//SHT2 H 8 A_CloseShotgun2
+			//SHT2 B 3
+			//SHT2 C 4
+			//SHT2 D 5 A_OpenShotgun2
+			//SHT2 E 4
+			//SHT2 F 5 A_LoadShotgun2
+			//SHT2 G 6
+			//SHT2 H 8 A_CloseShotgun2
+			//SHT2 A 5 
+			Goto ReloadStart
+		ReloadStart:
+			TNT1 A 0 A_TakeInventory("ReloadChecker", 1)
+			TNT1 A 0 A_JumpIfInventory("NewShell", 1, "ReloadLoop")
+			Goto ReloadFail
+		ReloadLoop: 
+			TNT1 A 0 A_OpenShotgun2
+			SHT2 D 6 A_WeaponReady(WRF_NOPRIMARY)
+			SHT2 E 4 A_WeaponReady(WRF_NOPRIMARY)
+			TNT1 F 0 A_LoadShotgun2
+			SHT2 F 5 A_WeaponReady(WRF_NOPRIMARY)
+			SHT2 G 7 A_WeaponReady(WRF_NOPRIMARY)
+			TNT1 A 0 A_TakeInventory("NewShell", 1)
+			TNT1 A 0 A_GiveInventory("LoadedSSG", 1)
+			TNT1 A 0 A_CloseShotgun2
+			SHT2 H 8 A_WeaponReady(WRF_NOPRIMARY)
+			TNT1 A 0 A_JumpIfInventory("LoadedSSG", 0, "ReloadEnd")
+			SHT2 B 3 A_WeaponReady(WRF_NOPRIMARY)
+			SHT2 C 4 A_WeaponReady(WRF_NOPRIMARY)
+			TNT1 A 0 A_JumpIfInventory("NewShell", 1, "ReloadLoop")
+		ReloadEnd:
+			SHT2 A 5
 			Goto Ready
+		ReloadFail:
+			SHT2 A 1
+			Goto Ready
+		
 		AltFire:
 			SHT2 A 1 Offset(-16, 54)
 			SHT2 A 1 Offset(-32, 68)
@@ -131,3 +162,11 @@ Actor SSGpickup: CustomInventory Replaces SuperShotgun
 }
 
 Actor SSGPickup2: SSGPickup Replaces NewSSG {} 
+
+Actor LoadedSSG : Ammo
+{
+	Inventory.Amount 2
+	Inventory.MaxAmount 2 
+	Ammo.BackpackAmount 0
+	Ammo.BackPackMaxAmount 2
+}
