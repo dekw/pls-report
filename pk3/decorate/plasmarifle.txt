@@ -18,26 +18,26 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("ReloadChecker", 1, "ReloadStart")
 			TNT1 A 0 A_JumpIfInventory("DropChecker", 1, "Drop")
-			NWPG A 1 A_WeaponReady
+			NWPF A 1 A_WeaponReady
 			Loop
 		Deselect:
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
-			NWPG A 1 A_Lower
+			NWPF A 1 A_Lower
 			TNT1 A 0 A_Lower
 			TNT1 A 0 ACS_ExecuteAlways(61)
 			Loop
 		Drop:
 			TNT1 A 0 A_TakeInventory("DropChecker", 1)
-			SHTG A 1 ACS_ExecuteAlways(651)
+			NWPF A 1 ACS_ExecuteAlways(651)
 			TNT1 A 0 A_GiveInventory("PidgeonPuncher", 1)
 			TNT1 A 0 A_SpawnItemEx("PGPickup", 64, 0, 18, 18, 0, 0, 0)
 			//trying sloppily to make spamming drop/reload not break stuff
@@ -49,7 +49,7 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 		Select:
 			TNT1 A 0 ACS_ExecuteAlways(651) //see: feeling better
 			TNT1 A 0 ACS_ExecuteAlways(654)
-			NWPG A 1 A_Raise
+			NWPF A 1 A_Raise
 			TNT1 A 0 A_Raise
 			Loop
 		Fire:
@@ -92,24 +92,24 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 			* WRF_NOPRIMARY so you can punch when you want
 			* along with A_WeaponReady allowing you to altfire
 			**/
-			NWPG A 1 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 34) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 36) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 38) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 40) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 42) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 44) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 46) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 48) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 50) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 52) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 54) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 56) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 58) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 1 Offset(0, 60) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 62) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 0 Offset(0, 64) A_PlaySound("sounds/pistolload", CHAN_WEAPON)
-			NWPG A 18 Offset(0, 64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 34) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 36) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 38) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 40) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 42) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 44) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 46) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 48) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 50) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 52) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 54) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 56) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 58) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 1 Offset(0, 60) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 62) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 0 Offset(0, 64) A_PlaySound("sounds/pistolload", CHAN_WEAPON)
+			NWPF A 18 Offset(0, 64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			Goto ReloadLoop
 		ReloadLoop:
 			TNT1 A 0 A_TakeInventory("NewCell", 1)
@@ -117,20 +117,20 @@ Actor NewPlasmaGun : Weapon Replaces PlasmaRifle
 			TNT1 A 0 A_JumpIfInventory("LoadedPlasma", 0, "ReloadEnd")
 			TNT1 A 0 A_JumpIfInventory("NewCell", 1, "ReloadLoop")
 		ReloadFail:
-			NWPG A 1
+			NWPF A 1
 			Goto Ready
 		ReloadEnd:
-			NWPG A 2 Offset(0, 62) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 59) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 56) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 53) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 50) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 47) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 44) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 41) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 38) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 35) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-			NWPG A 2 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 62) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 59) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 56) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 53) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 50) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 47) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 44) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 41) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 38) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 35) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+			NWPF A 2 Offset(0, 32) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			Goto Ready
 	}
 }
