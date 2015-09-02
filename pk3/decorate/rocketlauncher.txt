@@ -251,7 +251,7 @@ ACTOR NewRocketAmmo : Ammo Replaces RocketAmmo
   States
   {
   Spawn:
-    SHEL A -1
+    ROCK A -1
     Stop
   }
 }
@@ -263,7 +263,7 @@ ACTOR NewRocketBox : NewRocketAmmo replaces RocketBox
   States
   {
   Spawn:
-    SBOX A -1
+    BROK A -1
     Stop
   }
 }
